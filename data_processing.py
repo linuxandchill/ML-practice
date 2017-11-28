@@ -15,16 +15,16 @@ x[:, 1:3] = imputer.transform(x[:, 1:3])
 
 #encode categorical data
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-labelEncoder_country = LabelEncoder()
-x[:, 0] = labelEncoder_country.fit_transform(x[:, 0]) 
-onehotencorder = OneHotEncoder(categorial_features = [0])
+labelEncoder_x = LabelEncoder()
+x[:, 0] = labelEncoder_x.fit_transform(x[:, 0]) 
+onehotencorder = OneHotEncoder(categorical_features = [0])
 x = onehotencoder.fit_transform(x).toarray()
 #prevent encoding from giving higher val to one cat
-labelEncoder_purchased = LabelEncoder()
-purchased = onehotencoder.fit_transform().toarray()
+labelEncoder_y = LabelEncoder()
+y = onehotencoder.fit_transform().toarray()
 #encode "purchased" coulumn
-labelEncoder_purchased = LabelEncoder()
-y = labelEncoder_country.fit_transform(y)
+labelEncoder_y = LabelEncoder()
+y = labelEncoder_x.fit_transform(y)
 
 #splitting
 from sklearn.cross_validation import train_test_split
